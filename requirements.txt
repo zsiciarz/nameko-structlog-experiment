@@ -1,0 +1,4 @@
+eventlet==0.33.0
+nameko==2.14.1
+nameko-structlog==0.2.2
+structlog==21.5.0
