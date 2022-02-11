@@ -17,9 +17,16 @@ class ExampleService:
     @rpc
     def summon(self) -> str:
         entity = random.choice(self.great_old_ones + self.outer_gods)
-        log = self.log.bind(entity=entity)
+        log = self.log.bind(operation="summon", entity=entity)
         if entity in self.outer_gods:
             log = log.bind(danger_level="high")
         time.sleep(1.5)
         log.info("Summoning", entity=entity)
         return entity
+
+    @rpc
+    def is_sane(self) -> str:
+        log = self.log.bind(operation="sanity_check")
+        sanity_level = random.randint(0, 100)
+        log.info("Checking sanity", sanity_level=sanity_level)
+        return sanity_level > 75
