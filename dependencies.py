@@ -1,6 +1,8 @@
 import structlog
 from nameko.extensions import DependencyProvider
 
+from utils import OuterGodRepository
+
 logger = structlog.get_logger(__name__)
 
 
@@ -16,7 +18,7 @@ class GreatOldOneProvider(DependencyProvider):
 class OuterGodProvider(DependencyProvider):
     def setup(self):
         logger.info("Setting up", provider_class=self.__class__.__name__)
+        self.repo = OuterGodRepository()
 
     def get_dependency(self, worker_ctx):
-        logger.info("Mindlessly piping")
-        return ["Azatoth", "Nyarlathothep", "Shub-Niggurath", "Yog-Sototh"]
+        return self.repo.list_gods()

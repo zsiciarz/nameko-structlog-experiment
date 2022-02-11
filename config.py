@@ -1,4 +1,5 @@
 import logging.config
+
 import structlog
 
 
@@ -20,6 +21,7 @@ class Config:
             "nameko": {"handlers": ["console"], "level": "WARNING"},
             "dependencies": {"handlers": ["console"], "level": "INFO"},
             "example_service": {"handlers": ["console"], "level": "INFO"},
+            "utils": {"handlers": ["console"], "level": "INFO"},
         },
     }
 
